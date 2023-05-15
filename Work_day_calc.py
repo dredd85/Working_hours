@@ -22,7 +22,7 @@ for weeks in cal:
 
 print('This month has:', len(working_days), 'working days')
 print(calendar.month(year, month))
-
+#added a comment for excercise
 add_days = int(input('How many addtitional work days did You have? '))
 add_hours = int(input('Did you have any additional hours? '))
 sum_worked_days = len(working_days) + add_days
