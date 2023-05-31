@@ -1,42 +1,41 @@
-import calendar 
+import calendar
 from datetime import date
 from calendar import monthrange
 
-today = date.today()
-month = today.month
-year = today.year
+try:
+    today = date.today()
+    month = today.month
+    year = today.year
 
-working_days = list()
+    working_days = list()
 
-weekday, number_of_days = calendar.monthrange(year, month)
+    weekday, number_of_days = calendar.monthrange(year, month)
 
-print('The first day of month is:', calendar.day_name[weekday])
-print('This month has:', number_of_days, 'days')
+    print('The first day of month is:', calendar.day_name[weekday])
+    print('This month has:', number_of_days, 'days')
 
-cal = calendar.monthcalendar(year, month)
-for weeks in cal:
-    work_days = weeks[:5]
-    for days in work_days:
-        if days > 0:
-            working_days.append(days)
+    cal = calendar.monthcalendar(year, month)
+    for weeks in cal:
+        work_days = weeks[:5]
+        for days in work_days:
+            if days > 0:
+                working_days.append(days)
 
-print('This month has:', len(working_days), 'working days')
-print(calendar.month(year, month))
-#added a comment for excercise
-add_days = int(input('How many addtitional work days did You have? '))
-add_hours = int(input('Did you have any additional hours? '))
-sum_worked_days = len(working_days) + add_days
+    print('This month has:', len(working_days), 'working days')
+    print(calendar.month(year, month))
 
-print('You worked',sum_worked_days,'days')
+    add_days = int(input('How many additional work days did You have? '))
+    sum_worked_days = len(working_days) + add_days
 
-pay = int(input('What is your pay for hour? '))
-hours = int(input('How long is your working day? '))
+    add_hours = int(input('How many additional hours did You have? '))
 
-payment = sum_worked_days * pay * hours + add_hours * pay
+    pay = int(input('What is your pay for hour? '))
+    hours = int(input('How many hours You worked per day? '))
+    payment = sum_worked_days * pay * hours + add_hours * pay
 
-print('Your payment for this months is:', payment, 'zł')
-        
+    print('\n')
+    print('You worked for {} hours this month'.format(sum_worked_days * hours))
+    print('Your payment for this month is:', payment, 'zł')
 
-
-
-
+except ValueError:
+    print('Invalid input. Please enter a valid integer for the inputs.')
